@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>臧小鹏的博客</title>
+  
+  <subtitle>非宁静无以致远 非淡泊无以明志</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.stormzang.xyz/"/>
+  <updated>2017-11-07T02:46:42.267Z</updated>
+  <id>http://www.stormzang.xyz/</id>
+  
+  <author>
+    <name>stormzang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Welcom to stormzang&#39;s Blog</title>
+    <link href="http://www.stormzang.xyz/2017/11/07/Welcom/"/>
+    <id>http://www.stormzang.xyz/2017/11/07/Welcom/</id>
+    <published>2017-11-07T02:43:28.000Z</published>
+    <updated>2017-11-07T02:46:42.267Z</updated>
+    
+    <content type="html"><![CDATA[<p>你好！这是臧小鹏的个人博客，用来记录自己的程序猿之路！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;你好！这是臧小鹏的个人博客，用来记录自己的程序猿之路！&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
