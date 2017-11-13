@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://stormzang.xyz/2017/11/07/Welcom/</loc>
+    
+    <lastmod>2017-11-13T08:11:27.584Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://stormzang.xyz/about/index.html</loc>
     
-    <lastmod>2017-11-13T07:59:41.449Z</lastmod>
+    <lastmod>2017-11-13T08:09:34.452Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://stormzang.xyz/categories/index.html</loc>
     
     <lastmod>2017-11-13T07:46:39.948Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://stormzang.xyz/2017/11/07/Welcom/</loc>
-    
-    <lastmod>2017-11-13T07:41:51.862Z</lastmod>
     
   </url>
   
