@@ -3,11 +3,9 @@
 
 
     
-    
-    
   <url>
     <loc>http://stormzang.xyz/2017/11/07/Welcom/</loc>
-    <lastmod>2017-11-13T10:40:30.127Z</lastmod>
+    <lastmod>2017-11-13T11:14:05.191Z</lastmod>
     <data>
         <display>
         <title>第一篇博客</title>
@@ -17,10 +15,15 @@
          
          
            
+             
+              <breadCrumb title="test" url="http://stormzang.xyz/categories/test/"/>
+          
         </display>
     </data>
     </url>
 
+    
+    
     
     
 </urlset>
