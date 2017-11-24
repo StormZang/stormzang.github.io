@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2017%2F11%2F24%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[Markdown语法标题：几级标题就有几个#列表：有序列表（1.） 无序列表（- + ）链接：中括号 小括号图片：感叹号 中括号 小括号引用：&gt;粗体：两个 斜体：一个 *表格：|—代码：``代码块：``````注释：标签后面要加空格]]></content>
+    <title><![CDATA[Markdown语法]]></title>
+    <url>%2F2017%2F11%2F07%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[标题：几级标题就有几个#列表：有序列表（1.） 无序列表（- + ）链接：中括号 小括号图片：感叹号 中括号 小括号引用：&gt;粗体：两个 斜体：一个 *表格：|—代码：``代码块：``````注释：标签后面要加空格]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
   </entry>
 </search>
