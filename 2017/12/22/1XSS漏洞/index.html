@@ -81,16 +81,17 @@
 
 
 
-<meta name="description" content="臧小鹏的技术博客">
-<meta property="og:type" content="website">
+<meta name="description" content="xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。 反射型xss（非持久）: 反射型xss一般是指自定义内容发送的服务器，服务器返">
+<meta property="og:type" content="article">
 <meta property="og:title" content="StormZang‘s Blog">
-<meta property="og:url" content="http://stormzang.xyz/index.html">
+<meta property="og:url" content="http://stormzang.xyz/2017/12/22/1XSS漏洞/index.html">
 <meta property="og:site_name" content="StormZang‘s Blog">
-<meta property="og:description" content="臧小鹏的技术博客">
+<meta property="og:description" content="xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。 反射型xss（非持久）: 反射型xss一般是指自定义内容发送的服务器，服务器返">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-22T02:27:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="StormZang‘s Blog">
-<meta name="twitter:description" content="臧小鹏的技术博客">
+<meta name="twitter:description" content="xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。 反射型xss（非持久）: 反射型xss一般是指自定义内容发送的服务器，服务器返">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://stormzang.xyz/"/>
+  <link rel="canonical" href="http://stormzang.xyz/2017/12/22/1XSS漏洞/"/>
 
 
 
 
 
-  <title>StormZang‘s Blog</title>
+  <title> | StormZang‘s Blog</title>
   
 
 
@@ -145,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,304 +293,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://stormzang.xyz/2017/12/22/6暴力破解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="stormzang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StormZang‘s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/6暴力破解/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T11:10:00+08:00">
-                2017-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/22/6暴力破解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/6暴力破解/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ###1.利用burpsuite爆破
-
-抓包
-ctrl+I将包复制到intruder模块，因为要对password参数进行爆破，所以在password参数的内容两边加$
-选中Payloads，载入字典，点击Start attack进行爆破###2.手工sql注入
-username:admin&#39
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/6暴力破解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://stormzang.xyz/2017/12/22/0信息搜集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="stormzang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StormZang‘s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/0信息搜集/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T11:10:00+08:00">
-                2017-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/22/0信息搜集/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/0信息搜集/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-判断操作系统
-
-
-windows不区分大小写，Linux区分大小写
-IIS只存在于windows，nginx多用于Linux
-站长之家：seo综合查询
-
-2.数据库类型
-
-探测不到原因：改端口，内网服务器，站库分离
-数据库默认端口(1-65535)：
-Mysql 3306 Mssql 1433Or
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/0信息搜集/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -620,9 +325,7 @@ Mysql 3306 Mssql 1433Or
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/1XSS漏洞/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -671,144 +374,9 @@ Mysql 3306 Mssql 1433Or
           
 
 
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/1XSS漏洞/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://stormzang.xyz/2017/12/22/7Sql注入漏洞/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="stormzang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StormZang‘s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/7Sql注入漏洞/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T11:10:00+08:00">
-                2017-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/22/7Sql注入漏洞/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/7Sql注入漏洞/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+<span>&nbsp; | &nbsp;
+<span id="busuanzi_value_page_pv" ></span>次阅读
+</span>    
 
 
         </div>
@@ -824,27 +392,39 @@ Mysql 3306 Mssql 1433Or
       
 
       
-        
-          
-          
-原理： 网站数据传输中，接受变量传递的值未进行过滤，导致直接带入数据库查询执行的操作问题。
-必备条件：
-1.变量接受2.带入数据库查询执行3.不存在过滤（可尝试绕过)
-
-
-Access注入
-
-
-联合查询 ：判断注入（order by 6），猜解表名(union  select 1,2,3 form
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/7Sql注入漏洞/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h6 id="xss-全称cross-site-scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。"><a href="#xss-全称cross-site-scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。" class="headerlink" title="xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。"></a>xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。</h6><ol>
+<li><p><strong>反射型xss（非持久）:</strong> 反射型xss一般是指自定义内容发送的服务器，服务器返回到客户端显示时产生的脚本执行。常见在<em>搜索</em>功能中。</p>
+<p> <strong>检测方式：</strong> 输入数据提交，看返回的内容是不是还是原来的内容，若是则很大可能存在漏洞。有时候返回的网页信息可能没有显示原来输入的内容，但是可以通过查看网页源代码可以查看输入的内容有没有注入到网页的html代码中，若有则也明显存在。主要用于窃取客户端cookie和钓鱼欺骗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;</div><div class="line">&lt;a href=https://www.baidu.com&gt;click&lt;/a&gt;</div><div class="line">&lt;a href=’’ onclick=alert(&apos;xss&apos;)&gt;type&lt;/a&gt;</div><div class="line">去相应的网站访问不到相应的图片文件时就报错弹窗：</div><div class="line">&lt;img src=http://10.10.10.137/alan.jpg onerror=alert(&apos;xss&apos;)&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>存储型xss:（持久）</strong> 存储型xss是指用户输入的xss脚本存储到了<em>数据库</em>中，例如留言板功能，每次查看留言时都会触发。</p>
+<p> <strong>检测方式：</strong> 在留言板内容中输入<code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>弹出cookie信息</p>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>DOM型xss:</strong> 其实是一种特殊类型的反射型XSS，它是基于DOM文档对象模型的一种漏洞。客户端的脚本程序可以通过DOM来动态修改页面内容，从客户端获取DOM中的数据并在本地执行。基于这个特性，就可以利用JS脚本来实现XSS漏洞的利用。</p>
+<p> <strong>DOM</strong>: 全称Document Object Model，是一个平台和语言都中立的接口，可以使程序和脚本能够动态访问和更新文档的内容、结构以及样式。</p>
+<p> <strong>检测方式：</strong>构造payload<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code> 触发弹窗<code>‘；alert(/xss/)//</code><br><strong>(注意)</strong> javascript中var 用于声明变量，为变量声明文本值时加引号如<code>var $a=&#39;xxx&#39;;</code> 所以要闭合前一个单引号，注释后一个单引号才能触发弹窗。</p>
+<p> <strong>防御方法:</strong> DOM型XSS主要是由客户端的脚本通过DOM动态地输出数据到页面而不是依赖于将数据提交给服务器端，而从客户端获得DOM中的数据在本地执行，因而仅从服务器端是无法防御的。</p>
+</li>
+</ol>
+<ul>
+<li>避免客户端文档重写、重定向或其他敏感操作，同时避免使用客户端数据，这些操作尽量在服务器端使用动态页面来实现；</li>
+</ul>
+<h2 id="分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到则进行JS编码。"><a href="#分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到则进行JS编码。" class="headerlink" title="- 分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到则进行JS编码。  "></a>- 分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到<script>则进行JS编码。  </h2><p><strong>4. 利用XSS漏洞</strong></p>
+<ul>
+<li>利用innerHTML：用于纂改页面<br><code>&lt;script&gt;document.body.innerHTML=&quot;&lt;div style=visibility:visible;&gt;&lt;h1&gt;This is DOM XSS&lt;/h1&gt;&lt;/div&gt;&quot;;&lt;/script&gt;</code></li>
+<li>利用 重定向：<br><code>&lt;script&gt;window.location=&#39;https://www.baidu.com&#39;&lt;/script&gt;</code><h2 id="lt-iframe-SRC-quot-http-www-sina-com-quot-height-quot-0-quot-width-quot-0-quot-gt-lt-iframe-gt"><a href="#lt-iframe-SRC-quot-http-www-sina-com-quot-height-quot-0-quot-width-quot-0-quot-gt-lt-iframe-gt" class="headerlink" title="&lt;iframe SRC=&quot;http://www.sina.com&quot; height=&quot;0&quot; width=&quot;0&quot;&gt;&lt;/iframe&gt;"></a><code>&lt;iframe SRC=&quot;http://www.sina.com&quot; height=&quot;0&quot; width=&quot;0&quot;&gt;&lt;/iframe&gt;</code></h2><strong>5. xss字符过滤</strong></li>
+<li><script>标签的S大写</li>
+<li>如果源码匹配大小写： <code>&lt;scr&lt;script&gt;ipt&gt;alert(&quot;xss&quot;)&lt;/scr&lt;/script&gt;ipt&gt;</code></li>
+<li>如果源码中发现传到后台的字符串中如果存在“script”（大小写不分），就会返回error：<br><code>&lt;img src=1 onerror=alert(&quot;xss&quot;)&gt;</code><br><code>name=&lt;a herf=&quot;x&quot; onclick=&quot;alert(/xss/)&quot;&gt;test&lt;/a&gt;</code></li>
+<li>传到后台的字符串中如果存在“alert”（大小写不分），就会返回error：<code>&lt;script&gt;eval(String.fromCharCode(97, 108, 101, 114, 116, 40, 34, 65, 78, 89, 34, 41))&lt;/script&gt;</code></li>
+</ul>
+</script></h2>
       
     </div>
     
@@ -854,6 +434,35 @@ Access注入
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="stormzang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="stormzang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -861,161 +470,32 @@ Access注入
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://stormzang.xyz/2017/12/22/Sql注入漏洞/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="stormzang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StormZang‘s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/Sql注入漏洞/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T10:30:03+08:00">
-                2017-12-22
-              </time>
+              <a href="/2017/12/22/7Sql注入漏洞/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2017/12/22/0信息搜集/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/22/Sql注入漏洞/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/Sql注入漏洞/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          title: SQL注入漏洞tags: 渗透测试categories: 笔记
-
-原理： 网站数据传输中，接受变量传递的值未进行过滤，导致直接带入数据库查询执行的操作问题。
-必备条件：
-1.变量接受2.带入数据库查询执行3.不存在过滤（可尝试绕过)
-
-
-Access注入
-
-
-联合查询 ：判断注入（or
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/Sql注入漏洞/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1025,149 +505,37 @@ Access注入
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://stormzang.xyz/2017/12/22/渗透工具的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="stormzang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StormZang‘s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/渗透工具的使用/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T10:30:03+08:00">
-                2017-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/22/渗透工具的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/渗透工具的使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ##1.BurpSuiteBurpSuite核心组件站点目标（target）：提供站点地图，网站的目录架构截断代理（proxy）：可以截获和修改浏览器与目标Web应用之间的通讯数据爬虫程序（spider）：获得目标Web应用内容和功能应用扫描（scanner）：自动扫描目标Web应用漏洞入侵检测（i
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/渗透工具的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1175,6 +543,20 @@ Access注入
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1195,8 +577,17 @@ Access注入
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1271,6 +662,31 @@ Access注入
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#xss-全称cross-site-scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。"><span class="nav-number">1.</span> <span class="nav-text">xss:  全称cross-site scripting，是用于攻击Web客户端而不是服务器端，其最大的特点是能把恶意的JS或HTML代码注入到用户浏览的网页上。而XSS漏洞的存在，主要是由于Web应用程序对用户的输入没有进行严格的过滤所导致的，当攻击者把恶意代码注入到网页时，用户只要访问该网页就会执行其中的恶意代码。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到则进行JS编码。"><span class="nav-number"></span> <span class="nav-text">- 分析和强化客户端JS代码，特别是受到用户影响的DOM对象，注意能直接修改DOM和创建HTML文件的相关函数或方法，并在输出变量到页面时先进行编码转义，如输出到HTML则进行HTML编码、输出到则进行JS编码。  </h2><p><strong>4. 利用XSS漏洞</strong></p>
+<ul>
+<li>利用innerHTML：用于纂改页面<br><code>&lt;script&gt;document.body.innerHTML=&quot;&lt;div style=visibility:visible;&gt;&lt;h1&gt;This is DOM XSS&lt;/h1&gt;&lt;/div&gt;&quot;;&lt;/script&gt;</code></li>
+<li>利用 重定向：<br><code>&lt;script&gt;window.location=&#39;https://www.baidu.com&#39;&lt;/script&gt;</code><h2 id="lt-iframe-SRC-quot-http-www-sina-com-quot-height-quot-0-quot-width-quot-0-quot-gt-lt-iframe-gt"><a href="#lt-iframe-SRC-quot-http-www-sina-com-quot-height-quot-0-quot-width-quot-0-quot-gt-lt-iframe-gt" class="headerlink" title="&lt;iframe SRC=&quot;http://www.sina.com&quot; height=&quot;0&quot; width=&quot;0&quot;&gt;&lt;/iframe&gt;"></a><code>&lt;iframe SRC=&quot;http://www.sina.com&quot; height=&quot;0&quot; width=&quot;0&quot;&gt;&lt;/iframe&gt;</code></h2><strong>5. xss字符过滤</strong></li>
+<li><script>标签的S大写</li>
+<li>如果源码匹配大小写： <code>&lt;scr&lt;script&gt;ipt&gt;alert(&quot;xss&quot;)&lt;/scr&lt;/script&gt;ipt&gt;</code></li>
+<li>如果源码中发现传到后台的字符串中如果存在“script”（大小写不分），就会返回error：<br><code>&lt;img src=1 onerror=alert(&quot;xss&quot;)&gt;</code><br><code>name=&lt;a herf=&quot;x&quot; onclick=&quot;alert(/xss/)&quot;&gt;test&lt;/a&gt;</code></li>
+<li>传到后台的字符串中如果存在“alert”（大小写不分），就会返回error：<code>&lt;script&gt;eval(String.fromCharCode(97, 108, 101, 114, 116, 40, 34, 65, 78, 89, 34, 41))&lt;/script&gt;</code></li>
+</ul>
+</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1436,6 +852,10 @@ Access注入
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1453,6 +873,18 @@ Access注入
       <script id="dsq-count-scr" src="https://stormzang.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://stormzang.xyz/2017/12/22/1XSS漏洞/';
+          this.page.identifier = '2017/12/22/1XSS漏洞/';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://stormzang.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1831,26 +1263,6 @@ Access注入
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
